@@ -1,0 +1,136 @@
+{% extends 'User/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+<div class="col-md-12">
+    
+    <div class="white-box">
+        <div class="mb-3">
+            <h3>Update Customer - {{customer_obj.name}}</h3>
+        </div>
+        
+        {% comment %} {% if messages %}
+            
+            {% for message in messages %}
+                <div class="alert {{message.tags}}" role="alert">
+                    <strong>{{message}}</strong>
+                </div>
+            {% endfor %}
+                
+        {% endif %} {% endcomment %}
+            
+        <form method="POST" enctype="multipart/form-data" class="mt-3">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        {{ form.name.label_tag }}
+                        {{ form.name|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.dob.label_tag }}
+                        {{ form.dob|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.mobile.label_tag }}
+                        {{ form.mobile|add_class:"form-control" }}
+                    </div> 
+                    <div class="mb-3">
+                        {{ form.email.label_tag }}
+                        {{ form.email|add_class:"form-control" }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        {{ form.father_name.label_tag }}
+                        {{ form.father_name|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.mother_name.label_tag }}
+                        {{ form.mother_name|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.married_status.label_tag }}
+                        {{ form.married_status|add_class:"form-control" }}
+                    </div> 
+                    <div class="mb-3">
+                        {{ form.nominee.label_tag }}
+                        {{ form.nominee|add_class:"form-control" }}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        {{ form.aadhar.label_tag }}
+                        {{ form.aadhar|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.pan.label_tag }}
+                        {{ form.pan|add_class:"form-control" }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.address.label_tag }}
+                        {{ form.address|add_class:"form-control" }}
+                    </div> 
+                    <div class="mb-3">
+                        {{ form.pin.label_tag }}
+                        {{ form.pin|add_class:"form-control" }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview" src="{{customer_obj.pan_image.url}}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                            {{ form.pan_image.label_tag }}
+                            {{ form.pan_image|add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <img id="imgPreview1" src="{{customer_obj.passport_image.url}}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                            {{ form.passport_image.label_tag }}
+                            {{ form.passport_image|add_class:"form-control" }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview2" src="{{customer_obj.aadhar_front_image.url}}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                            {{ form.aadhar_front_image.label_tag }}
+                            {{ form.aadhar_front_image|add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <img id="imgPreview3" src="{{customer_obj.signeture_image.url}}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                            {{ form.signeture_image.label_tag }}
+                            {{ form.signeture_image|add_class:"form-control" }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview4" src="{{customer_obj.aadhar_back_image.url}}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                            {{ form.aadhar_back_image.label_tag }}
+                            {{ form.aadhar_back_image|add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <div class="text-center p-5">
+                        <div class="mb-3">
+                            {{ form.account_status.label_tag }}
+                            {{ form.account_status }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center p-5">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+            </div>
+        </form>
+    </div>
+        
+</div>
+{% endblock content %}

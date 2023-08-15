@@ -1,0 +1,111 @@
+{% extends 'User/base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="col-md-12">
+    <div class="white-box">
+        <div class="mb-3">
+            <h3>View Customer : {{customers.name}}</h3>
+        </div>
+            
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                      <label for="inputText1" class="form-label">Name :</label>
+                      <input type="text"
+                        class="form-control" name="name" id="inputText1" value="{{customers.name}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText2" class="form-label">Date Of Birth :</label>
+                        <input type="text"
+                          class="form-control" name="dob" id="inputText2" value="{{customers.dob}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText4" class="form-label">Phone :</label>
+                        <input type="text"
+                          class="form-control" name="email" id="inputText4" value="{{customers.mobile}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText4" class="form-label">Email :</label>
+                        <input type="email"
+                          class="form-control" name="email" id="inputText4" value="{{customers.email}}" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="inputText5" class="form-label">Father's Name :</label>
+                        <input type="text"
+                          class="form-control" name="father_name" id="inputText5" value="{{customers.father_name}}" readonly>
+                    </div> 
+                    <div class="mb-3">
+                        <label for="inputText5" class="form-label">Mother's Name :</label>
+                        <input type="text"
+                          class="form-control" name="mother_name" id="inputText5" value="{{customers.mother_name}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="selectInput1" class="form-label">Married status :</label>
+                        <input type="text" class="form-control" for="selectInput1" value="{{customers.married_status}}" readonly>
+                    </div> 
+                    <div class="mb-3">
+                        <label for="inputText6" class="form-label">Nominee :</label>
+                        <input type="text"
+                          class="form-control" name="nominee" id="inputText6" value="{{customers.nominee}}" readonly> 
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="inputText7" class="form-label">Aadhar Number :</label>
+                        <input type="text"
+                          class="form-control" name="aadhar" id="inputText7" value="{{customers.aadhar}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText8" class="form-label">Pan Number :</label>
+                        <input type="text"
+                          class="form-control" name="pan" id="inputText8" value="{{customers.pan}}" readonly> 
+                    </div>
+                    <div class="mb-3">
+                      <label for="addressInput1" class="form-label">Address :</label>
+                      <textarea class="form-control" name="address" id="addressInput1" rows="3" readonly>{{customers.address}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText9" class="form-label">Pin Code :</label>
+                        <input type="text"
+                          class="form-control" name="pin" id="inputText9" value="{{customers.pin}}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview" src="{{customers.pan_image.url}}" class="img-thumbnail rounded" alt="Image">
+                    </div>
+                    <div class="card-body p-3">
+                        <img id="imgPreview1" src="{{customers.passport_image.url}}" class="img-thumbnail rounded" alt="Image">
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview2" src="{{customers.aadhar_front_image.url}}" class="img-thumbnail rounded" alt="Image">
+                       
+                    </div>
+                    <div class="card-body p-3">
+                        <img id="imgPreview3" src="{{customers.signeture_image.url}}" class="img-thumbnail rounded" alt="Image">
+                       
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview4" src="{{customers.aadhar_back_image.url}}" class="img-thumbnail rounded" alt="Image">
+                    </div>
+                    <div class="text-center p-5">
+                        <a class="btn btn-primary btn-lg" href="{% url 'Customers' %}" role="button">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+    

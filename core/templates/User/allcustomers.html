@@ -1,0 +1,73 @@
+{% extends 'User/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title">Basic Table</h3>
+            {% if messages %}
+            
+                {% for message in messages %}
+                    <div class="alert {{message.tags}}" role="alert">
+                        <strong>{{message}}</strong>
+                    </div>
+                {% endfor %}
+                    
+            {% endif %}
+            <div class="table-responsive">
+                <table id="myTable" class="table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0 mx-2">Customer ID</th>
+                            <th class="border-top-0 mx-2">Pic</th>
+                            <th class="border-top-0 mx-2">Name</th>
+                            <th class="border-top-0 mx-2">Mobile</th>
+                            <th class="border-top-0 mx-2">Email</th>
+                            <th class="border-top-0 mx-2">Aadhar</th>
+                            <th class="border-top-0 mx-2">Pan</th>
+                            <th class="border-top-0 mx-2">Date</th>
+                            <th class="border-top-0 mx-2">Account Status</th>
+                            <th class="border-top-0 mx-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td class="mx-2">{{customer.customer_id}}</td>
+                            <td class="mx-2">
+                                <div class="d-flex align-items-center"><img class="rounded-circle" src="{{customer.passport_image.url}}" width="30"></div>
+                            </td>
+                            <td class="mx-2">{{customer.name}}</td>
+                            <td class="mx-2">{{customer.mobile}}</td>
+                            <td class="mx-2">{{customer.email}}</td>
+                            <td class="mx-2">{{customer.aadhar}}</td>
+                            <td class="mx-2">{{customer.pan}}</td>
+                            <td class="mx-2">{{customer.created_at}}</td>
+                            <td class="mx-2">
+                                
+                                {% if customer.account_status %}
+                                    <span class="badge bg-primary">Approved</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Pending</span>
+                                {% endif %}
+                                    
+                            </td>
+                            <td>
+                                <a type="button" href="{% url 'View_customers' customer.customer_id %}" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="View"><i class="fas fa-eye"></i></a>
+                                
+                                {% if not customer.account_status %}
+                                    <a type="button" href="{% url 'Update_customers' customer.customer_id %}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+                                    <a type="button" href="{% url 'Delete_customers' customer.customer_id %}" class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="Delete"><i class="far fa-trash-alt"></i></a>
+                                {% endif %}
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

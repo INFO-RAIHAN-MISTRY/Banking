@@ -1,0 +1,59 @@
+{% extends 'User/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    
+    {% if messages %}
+        
+        {% for message in messages %}
+            <div class="alert {{message.tags}}" role="alert">
+                <strong>{{message}}</strong>
+            </div>
+            
+        {% endfor %}
+            
+    {% endif %}
+        
+    <div class="col-lg-4 col-md-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Total Customers</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <div id="sparklinedash"><canvas width="67" height="30"
+                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                    </div>
+                </li>
+                <li class="ms-auto"><span class="counter text-success">{{total_customer}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Account Approved</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <div id="sparklinedash2"><canvas width="67" height="30"
+                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                    </div>
+                </li>
+                <li class="ms-auto"><span class="counter text-purple">{{account_approved}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Account Pending</h3>
+            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                <li>
+                    <div id="sparklinedash3"><canvas width="67" height="30"
+                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                    </div>
+                </li>
+                <li class="ms-auto"><span class="counter text-danger">{{account_pending}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

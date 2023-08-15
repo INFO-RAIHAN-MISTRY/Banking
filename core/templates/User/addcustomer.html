@@ -1,0 +1,143 @@
+{% extends 'User/base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="col-md-12">
+    <div class="white-box">
+        <div class="mb-3">
+            <h3>Add a new Customer</h3>
+        </div>
+        
+        {% if messages %}
+            
+            {% for message in messages %}
+                <div class="alert {{message.tags}}" role="alert">
+                    <strong>{{message}}</strong>
+                </div>
+            {% endfor %}
+                
+        {% endif %}
+            
+        <form method="POST" enctype="multipart/form-data" class="mt-3">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" name="from_user" value="{{request.user.username}}" hidden required>
+                    <div class="mb-3">
+                      <label for="inputText1" class="form-label">Name :</label>
+                      <input type="text"
+                        class="form-control" name="name" id="inputText1" placeholder="Enter full name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText2" class="form-label">Date Of Birth :</label>
+                        <input type="date"
+                          class="form-control" name="dob" id="inputText2" placeholder="Enter date of birth" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText3" class="form-label">Mobile :</label>
+                        <input type="text"
+                          class="form-control" name="mobile" id="inputText3" placeholder="Enter mobile number" required>
+                    </div> 
+                    <div class="mb-3">
+                        <label for="inputText4" class="form-label">Email :</label>
+                        <input type="email"
+                          class="form-control" name="email" id="inputText4" placeholder="Enter Email Id">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="inputText5" class="form-label">Father's Name :</label>
+                        <input type="text"
+                          class="form-control" name="father_name" id="inputText5" placeholder="Enter father's name" required>
+                    </div> 
+                    <div class="mb-3">
+                        <label for="inputText5" class="form-label">Mother's Name :</label>
+                        <input type="text"
+                          class="form-control" name="mother_name" id="inputText5" placeholder="Enter mothers's name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="selectInput1" class="form-label">Married status :</label>
+                        <select class="form-select form-select-lg" name="married_status" id="selectInput1" required>
+                            <option value="married" selected>Married</option>
+                            <option value="unmarried">Unmarried</option>
+                        </select>
+                    </div> 
+                    <div class="mb-3">
+                        <label for="inputText6" class="form-label">Nominee :</label>
+                        <input type="text"
+                          class="form-control" name="nominee" id="inputText6" placeholder="Enter nominee's name" required> 
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="inputText7" class="form-label">Aadhar Number :</label>
+                        <input type="text"
+                          class="form-control" name="aadhar" id="inputText7" placeholder="Enter AAdhar number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText8" class="form-label">Pan Number :</label>
+                        <input type="text"
+                          class="form-control" name="pan" id="inputText8" placeholder="Enter Pan number" required> 
+                    </div>
+                    <div class="mb-3">
+                      <label for="addressInput1" class="form-label">Address :</label>
+                      <textarea class="form-control" name="address" id="addressInput1" rows="2" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputText9" class="form-label">Pin Code :</label>
+                        <input type="text"
+                          class="form-control" name="pin" id="inputText9" placeholder="Enter Pin code" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview" src="{% static '/vendors/plugins/images/pan.webp' %}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                          <label for="photo" class="form-label">Pan Image</label>
+                          <input type="file" class="form-control" name="pan_image" id="photo" placeholder="Upload Pan Image" required>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <img id="imgPreview1" src="{% static '/vendors/plugins/images/passport.webp' %}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                          <label for="photo" class="form-label">Passport photo</label>
+                          <input type="file" class="form-control" name="passport_image" id="photo1" placeholder="Upload photo" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview2" src="{% static '/vendors/plugins/images/aadhar.webp' %}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                          <label for="photo" class="form-label">AAdhar front Image</label>
+                          <input type="file" class="form-control" name="aadhar_front_image" id="photo2" placeholder="Upload AAdhar front image" required>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <img id="imgPreview3" src="{% static '/vendors/plugins/images/signeture.webp' %}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                          <label for="photo" class="form-label">Signeture</label>
+                          <input type="file" class="form-control" name="signeture_image" id="photo3" placeholder="Signeture image" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-body p-3">
+                        <img id="imgPreview4" src="{% static '/vendors/plugins/images/aadhar.webp' %}" class="img-thumbnail rounded" alt="Image">
+                        <div class="my-2">
+                          <label for="photo" class="form-label">AAdhar back Image</label>
+                          <input type="file" class="form-control" name="aadhar_back_image" id="photo4" placeholder="Upload AAdhar back image" required>
+                        </div>
+                    </div>
+                    <div class="text-center p-5">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+    
